@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#This file should be on /usr/bin/
+case "$1" in
+	shutdown)
+		systemctl poweroff -i
+		;;
+	restart)
+		systemctl reboot
+		;;
+	*)
+		exit 2
+esac
+exit 0
