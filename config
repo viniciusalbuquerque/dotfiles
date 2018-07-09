@@ -213,6 +213,7 @@ client.urgent #ff7066 #ff7066 #141414 #ff7066
 # Config shutdown
 # bindsym ctrl+Mod1+p exec --no-startup-id systemctl poweroff -i, mode "default"
 
+set $mode_system Shutdown Mode
 mode "$mode_system" {
 	bindsym Escape mode "default"; exec killall i3-nagbar
 }
