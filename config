@@ -213,9 +213,13 @@ client.urgent #ff7066 #ff7066 #141414 #ff7066
 # Config shutdown
 # bindsym ctrl+Mod1+p exec --no-startup-id systemctl poweroff -i, mode "default"
 
-set $mode_system Shutdown Mode
 mode "$mode_system" {
 	bindsym Escape mode "default"; exec killall i3-nagbar
 }
 
 bindsym ctrl+Mod1+p mode "$mode_system"; exec "i3-nagbar warning -m 'Do you really want to shutdown?' -b 'Yes' 'i3-sysctl shutdown' -b 'Restart' 'i3-sysctl restart'" 
+
+#Screenshot
+bindsym --release Print exec "scrot -m '/home/viniciusaraujo/Pictures/Screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png'"
+bindsym --release Shift+Print exec "scrot -s '/home/viniciusaraujo/Pictures/Screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '/home/viniciusaraujo/Pictures/Screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
