@@ -170,7 +170,7 @@ bar {
 exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 
 #Custom Configs
-exec --no-startup-id xrandr --output eDP1 --auto --left-of DP1
+exec --no-startup-id xrandr --output eDP-1 --auto --right-of HDMI-1
 exec --no-startup-id compton --opacity-rule '100:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
 focus_follows_mouse no
 
@@ -219,3 +219,8 @@ mode "$mode_system" {
 }
 
 bindsym ctrl+Mod1+p mode "$mode_system"; exec "i3-nagbar warning -m 'Do you really want to shutdown?' -b 'Yes' 'i3-sysctl shutdown' -b 'Restart' 'i3-sysctl restart'" 
+
+#Screenshot
+bindsym --release Print exec "scrot -m '/home/viniciusaraujo/Pictures/Screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png'"
+bindsym --release Shift+Print exec "scrot -s '/home/viniciusaraujo/Pictures/Screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '/home/viniciusaraujo/Pictures/Screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
