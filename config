@@ -226,5 +226,7 @@ bindsym --release Shift+Print exec "scrot -s '/home/viniciusaraujo/Pictures/Scre
 bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '/home/viniciusaraujo/Pictures/Screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
 
 # Find a way to toggle between states
-bindsym $mod+c exec "nmcli radio wifi on"
-bindsym $mod+z exec "nmcli radio wifi off"
+bindsym $mod+c exec i3-wifi-ctrl
+
+#Toggle touchpad
+bindsym $mod+t exec i3-touch-ctrl

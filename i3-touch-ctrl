@@ -1,0 +1,13 @@
+#/bin/sh
+
+#This file should be in /usr/bin
+
+x=$(synclient -l | grep TouchpadOff | cut -d'=' -f2)
+
+if [ $x -eq 1 ]; then
+	synclient TouchpadOff=0
+else
+	synclient TouchpadOff=1
+fi
+
+exit 0

@@ -1,0 +1,13 @@
+#/bin/sh
+
+#This file should be in /usr/bin
+
+x=$(nmcli radio wifi)
+
+if [ "$x" = "enabled" ]; then
+	nmcli radio wifi off
+else
+	nmcli radio wifi on
+fi
+
+exit 0
