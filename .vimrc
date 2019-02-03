@@ -37,5 +37,6 @@ vnoremap <left>  <nop>
 vnoremap <right> <nop>
 
 map <C-t> :tabnew <CR>
+map <F2> :bprevious<CR>
 
 let g:hardtime_default_on = 1
