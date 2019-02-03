@@ -8,6 +8,7 @@ set hlsearch
 set smartcase
 set ignorecase
 set incsearch
+nnoremap <silent> <C-l> :nohl <CR>
 
 set autoindent
 set shiftwidth=4
@@ -27,16 +28,8 @@ syntax enable
 
 map <C-n> :NERDTreeToggle <CR>
 
-nnoremap <up>    <nop>
-nnoremap <down>  <nop>
-nnoremap <left>  <nop>
-nnoremap <right> <nop>
-vnoremap <up>    <nop>
-vnoremap <down>  <nop>
-vnoremap <left>  <nop>
-vnoremap <right> <nop>
-
 map <C-t> :tabnew <CR>
 map <F2> :bprevious<CR>
+map <F3> :bnext<CR>
 
 let g:hardtime_default_on = 1
