@@ -1,35 +1,40 @@
-execute pathogen#infect()
+set nocompatible
+syntax on
+
+" set notimeout ttimeout ttimeoutlen=200
+
+set showcmd
 set number
 set relativenumber
-set showmatch
 set cursorline
+set showmatch
+set nowrap
 
 set hlsearch
 set smartcase
 set ignorecase
 set incsearch
-nnoremap <silent> <C-l> :nohl <CR>
 
 set autoindent
-set shiftwidth=4
 set smartindent
 set smarttab
+set expandtab
+set shiftwidth=4
 set softtabstop=4
 
 set ruler
-highlight ColorColumn ctermbg=magenta
-call matchadd('colorColumn', '\%71v', 100)
 
 set laststatus=2
 set noshowmode
-set timeoutlen=1000 ttimeoutlen=0
 
-syntax enable
+let mapleader = " "
+map <leader>w :w<CR>
+map <leader>q :q<CR>
+map <leader>e :Ex<CR>
 
-map <C-n> :NERDTreeToggle <CR>
+call plug#begin('~/.vim/plugged')
+Plug 'gruvbox-community/gruvbox'
+call plug#end()
 
-map <C-t> :tabnew <CR>
-map <F2> :bprevious<CR>
-map <F3> :bnext<CR>
-
-let g:hardtime_default_on = 1
+colorscheme gruvbox
+set background=dark
