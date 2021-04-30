@@ -1,0 +1,10 @@
+#!/bin/sh
+#monitor_count=$(xrandr | grep connected | grep -v disconnected | wc -l)
+monitor_count=$(xrandr --listmonitors | awk -F: 'NR==1{print $2}')
+if [ $monitor_count -eq 3 ]; then
+	xrandr --output HDMI-2 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --mode 1920x1080 --rate 165 --pos 1920x0
+elif [ $monitor_count -eq 2 ]; then
+	xrandr --output HDMI-2 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off
+else
+	xrandr --output HDMI-2 --off --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off
+fi
