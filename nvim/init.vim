@@ -81,5 +81,6 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 lua << EOF
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.clangd.setup{}
+require'lspconfig'.kotlin_language_server.setup{}
 EOF
 
