@@ -58,9 +58,13 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "terminator", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *lockscreen[] = { "slock", NULL };
+
+static const char *upvol[]   = { "pactl", "set-sink-volume", "1", "+5%",     NULL };
+static const char *downvol[] = { "pactl", "set-sink-volume", "1", "-5%",     NULL };
+static const char *mutevol[] = { "pactl", "set-sink-mute",   "1", "toggle",  NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,6 +103,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Escape, quit,           {0} },
 	{ MODKEY,                       XK_F1,     spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_Escape, spawn,          {.v = lockscreen } },
+	{ MODKEY,                       XK_equal,  spawn,          {.v = upvol } },
+	{ MODKEY,                       XK_minus,  spawn,          {.v = downvol } },
+	{ MODKEY|ShiftMask,             XK_minus,  spawn,          {.v = mutevol } },
 };
 
 /* button definitions */

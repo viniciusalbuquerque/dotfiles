@@ -33,6 +33,11 @@ set cursorline
 
 set list listchars=tab:»·,trail:·,nbsp:·
 
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+
 let mapleader = " "
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
