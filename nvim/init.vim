@@ -1,5 +1,4 @@
 set nocompatible
-
 syntax on
 
 set nu
@@ -17,6 +16,7 @@ set laststatus=2
 
 set showmode
 set showcmd
+set hidden
 
 set hlsearch
 set incsearch
@@ -42,6 +42,7 @@ let mapleader = " "
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>e :Ex<CR>
+nnoremap <leader>c :set nu!<CR><bar>:set rnu!<CR>
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gc :Git commit<CR>
 
@@ -50,6 +51,11 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 Plug 'gruvbox-community/gruvbox'
 Plug 'hrsh7th/nvim-compe'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 call plug#end()
 
 colorscheme gruvbox
@@ -71,7 +77,6 @@ let g:compe.max_abbr_width = 100
 let g:compe.max_kind_width = 100
 let g:compe.max_menu_width = 100
 let g:compe.documentation = v:true
-
 let g:compe.source = {}
 let g:compe.source.path = v:true
 let g:compe.source.buffer = v:true
@@ -83,9 +88,28 @@ inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 lua << EOF
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.kotlin_language_server.setup{}
+require'lspconfig'.tsserver.setup{}
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+}
+
+require('telescope').setup{
+  defaults = {
+    file_ignore_patterns = {"node_modules", ".git", "__pycache__"}
+  }
+}
 EOF
 
