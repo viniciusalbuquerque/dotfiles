@@ -50,6 +50,10 @@ nnoremap <leader>r :%s///gc<left><left><left>
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gc :Git commit<CR>
 
+nnoremap <leader>. :cn<enter>
+nnoremap <leader>, :cp<enter>
+nnoremap <leader>/ :ccl<enter>
+
 call plug#begin('~/.vim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
