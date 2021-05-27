@@ -37,8 +37,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym $bindsym+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym $bind+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -194,13 +192,20 @@ exec --no-startup-id initial-monitors-state
 exec --no-startup-id config_keyboard
 exec_always --no-startup-id picom &
 
-bindsym $mod+Shift+period move workspace to output left
-bindsym $mod+period focus output left
+default_border pixel 1
+default_floating_border pixel 1
+
+bindsym $mod+Shift+period move workspace to output right
+bindsym $mod+period focus output right
+bindsym $mod+Shift+comma move workspace to output left
+bindsym $mod+comma focus output left
 
 bindsym $mod+KP_Add exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% # increase sound volume
 bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% # increase sound volume
 bindsym $mod+KP_Subtract exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% # decrease sound volume
 bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% # decrease sound volume
+#bindsym $mod+KP_0 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym $mod+KP_0 exec --no-startup-id pactl set-source-mute 6 toggle
 
 # Custom programs
 bindsym $mod+Escape exec i3lock
