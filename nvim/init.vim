@@ -1,4 +1,4 @@
-source ~/.vimrc
+source ../vim/vimrc.vim
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
