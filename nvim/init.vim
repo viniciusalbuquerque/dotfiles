@@ -1,9 +1,10 @@
 source ~/.vimrc
 
 call plug#begin('~/.vim/plugged')
-Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 Plug 'gruvbox-community/gruvbox'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
