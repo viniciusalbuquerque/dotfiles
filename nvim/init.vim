@@ -1,15 +1,16 @@
 source ~/.vimrc
 
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'gruvbox-community/gruvbox'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 call plug#end()
@@ -26,16 +27,7 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
-" Telescope mappings
-nnoremap <leader>p <cmd>Telescope git_files<cr>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fw <cmd>Telescope grep_string<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 lua << EOF
-require('telescope')
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.kotlin_language_server.setup{}
@@ -48,4 +40,6 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+source ~/.config/nvim/telescope-config.vim
 source ~/.config/nvim/lsp-config.vim
+source ~/.config/nvim/lspsaga-config.vim

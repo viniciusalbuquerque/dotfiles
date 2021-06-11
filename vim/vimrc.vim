@@ -44,11 +44,8 @@ let mapleader = " "
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>e :Ex<CR>
-nnoremap <leader>c :set nu!<CR><bar>:set rnu!<CR>
+nnoremap <leader>z :set nu!<CR><bar>:set rnu!<CR>
 nnoremap <leader>r :%s///gc<left><left><left>
-
-nnoremap <leader>gs :G<CR>
-nnoremap <leader>gc :Git commit<CR>
 
 nnoremap <leader>. :cn<enter>
 nnoremap <leader>, :cp<enter>
