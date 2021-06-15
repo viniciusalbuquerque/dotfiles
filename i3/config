@@ -188,8 +188,6 @@ focus_follows_mouse no
 #hide_edge_borders both
 workspace_auto_back_and_forth yes
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id initial-monitors-state
-exec --no-startup-id config_keyboard
 exec_always --no-startup-id picom &
 
 default_border pixel 1
@@ -207,10 +205,32 @@ bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 #bindsym $mod+KP_0 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym $mod+KP_0 exec --no-startup-id pactl set-source-mute 6 toggle
 
+bindsym $mod+Shift+s scratchpad show, move position center
+
 # Custom programs
 bindsym $mod+Escape exec i3lock
 bindsym $mod+F1 exec firefox
-bindsym $mod+v exec pavucontrol
 bindsym $mod+n exec nautilus .
-bindsym $mod+Print exec gnome-screenshot -a
-bindsym $mod+c exec config_keyboard
+bindsym $mod+Print exec scrot -s
+#bindsym $mod+v exec pavucontrol
+
+exec --no-startup-id $term --title spterm
+for_window [title="spterm"] floating enable
+for_window [title="spterm"] move scratchpad
+for_window [title="spterm"] border pixel 3
+for_window [title="spterm"] resize set 700 500
+bindsym $mod+t [title="spterm"] scratchpad show; [title="spterm"] move position center
+
+exec --no-startup-id pulseUI
+for_window [class="PulseUI"] floating enable
+for_window [class="PulseUI"] border pixel 3
+for_window [class="PulseUI"] move scratchpad
+for_window [class="PulseUI"] resize set 350 392
+bindsym $mod+p [class="PulseUI"] scratchpad show; [class="PulseUI"] move position center
+
+exec --no-startup-id pavucontrol --name=sp_pc
+for_window [instance="sp_pc"] floating enable
+for_window [instance="sp_pc"] border pixel 3
+for_window [instance="sp_pc"] move scratchpad
+for_window [instance="sp_pc"] resize set 900 800
+bindsym $mod+v [instance="sp_pc"] scratchpad show; [instance="sp_pc"] move position center
