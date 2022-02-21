@@ -6,7 +6,12 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
-Plug 'hrsh7th/nvim-compe'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -19,20 +24,15 @@ colorscheme gruvbox
 set background=dark
 highlight Normal guibg=None
 
-" Compe configs
-luafile ~/.config/nvim/compe-config.lua
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+" Cmp configs
+luafile ~/.config/nvim/cmp-config.lua
 
 lua << EOF
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.kotlin_language_server.setup{}
 require'lspconfig'.tsserver.setup{}
-
+require'lspconfig'.gopls.setup{}
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
