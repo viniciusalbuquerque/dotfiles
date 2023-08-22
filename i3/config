@@ -234,3 +234,7 @@ for_window [instance="sp_pc"] border pixel 3
 for_window [instance="sp_pc"] move scratchpad
 for_window [instance="sp_pc"] resize set 900 800
 bindsym $mod+v [instance="sp_pc"] scratchpad show; [instance="sp_pc"] move position center
+
+# gaps
+gaps inner 15
+gaps outer 15
